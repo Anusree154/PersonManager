@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'in.upcode'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+ext{
+	SpringBootStartedVersion='3.2.0'
+
+
+}
+dependencies {
+
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation "org.projectlombok:lombok:1.18.30"
+	implementation  "org.postgresql:postgresql:42.7.1"
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa:${SpringBootStartedVersion}"
+	implementation "org.springframework.boot:spring-boot-starter-web:${SpringBootStartedVersion}"
+	implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${SpringBootStartedVersion}"
+	testImplementation "org.springframework.boot:spring-boot-starter-test:${SpringBootStartedVersion}"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
